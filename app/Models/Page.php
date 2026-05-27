@@ -17,6 +17,11 @@ class Page extends Model
         'published',
         'title',
         'description',
+        'seo_title',
+    'seo_description',
+    'seo_keywords',
+    'views'
+
     ];
 
     public $translatedAttributes = [
@@ -27,4 +32,8 @@ class Page extends Model
     public $slugAttributes = [
         'title',
     ];
+    public function getSeoTitleAttribute()
+{
+    return $this->seo_title ?? $this->title;
+}
 }

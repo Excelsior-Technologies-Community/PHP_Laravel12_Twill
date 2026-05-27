@@ -2,14 +2,14 @@
 
 return [
     'block_editor' => [
-        'blocks' => [
-            'hero_banner' => [
-                'title'     => 'Hero Banner',
-                'icon'      => 'image',
-                'component' => 'a-block-hero-banner', 
-            ],
-        ],
+    'use_twill_blocks' => [
+        'hero',
+        'text',
+        'image',
+        'gallery',
+        'faq',
     ],
+],
 
     'crops' => [
         'image' => [

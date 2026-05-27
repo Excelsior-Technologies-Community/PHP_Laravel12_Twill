@@ -3,25 +3,21 @@
 namespace App\Http\Controllers\Twill;
 
 use A17\Twill\Models\Contracts\TwillModelContract;
-use A17\Twill\Services\Forms\Fields\BlockEditor;
-use A17\Twill\Services\Forms\Fields\Medias;
 use A17\Twill\Services\Listings\Columns\Text;
 use A17\Twill\Services\Listings\TableColumns;
 use A17\Twill\Services\Forms\Fields\Input;
 use A17\Twill\Services\Forms\Form;
 use A17\Twill\Http\Controllers\Admin\ModuleController as BaseModuleController;
 
-class PageController extends BaseModuleController
+class PostController extends BaseModuleController
 {
-    protected $moduleName = 'pages';
-
+    protected $moduleName = 'posts';
     /**
      * This method can be used to enable/disable defaults. See setUpController in the docs for available options.
      */
     protected function setUpController(): void
     {
-        $this->setPermalinkBase('');
-        $this->withoutLanguageInPermalink();
+        $this->disablePermalink();
     }
 
     /**
@@ -33,26 +29,9 @@ class PageController extends BaseModuleController
         $form = parent::getForm($model);
 
         $form->add(
-            Input::make()->name('description')->label('Description')->translatable()
+            Input::make()->name('description')->label('Description')
         );
 
-        $form->add(
-            Medias::make()->name('cover')->label('Cover image')
-        );
-
-        $form->add(
-            BlockEditor::make()
-        );
-
-        $form->add(
-            Input::make()->name('seo_title')->label('SEO Title')->translatable()
-        );
-        $form->add(
-            Textarea::make()->name('seo_description')->label('SEO Description')->rows(3)->translatable()
-        );
-        $form->add(
-            Input::make()->name('seo_keywords')->label('SEO Keywords (comma separated)')->translatable()
-        );
         return $form;
     }
 
